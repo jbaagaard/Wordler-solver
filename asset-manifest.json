@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Wordler-solver/static/css/main.862e115b.css",
+    "main.js": "/Wordler-solver/static/js/main.4e7afb39.js",
+    "static/js/787.ec997f31.chunk.js": "/Wordler-solver/static/js/787.ec997f31.chunk.js",
+    "index.html": "/Wordler-solver/index.html",
+    "main.862e115b.css.map": "/Wordler-solver/static/css/main.862e115b.css.map",
+    "main.4e7afb39.js.map": "/Wordler-solver/static/js/main.4e7afb39.js.map",
+    "787.ec997f31.chunk.js.map": "/Wordler-solver/static/js/787.ec997f31.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.862e115b.css",
+    "static/js/main.4e7afb39.js"
+  ]
+}
