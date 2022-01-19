@@ -1,15 +1,13 @@
 {
   "files": {
-    "main.css": "/Wordler-solver/static/css/main.862e115b.css",
-    "main.js": "/Wordler-solver/static/js/main.461ee0b4.js",
-    "static/js/787.ec997f31.chunk.js": "/Wordler-solver/static/js/787.ec997f31.chunk.js",
+    "main.css": "/Wordler-solver/static/css/main.2532db9b.css",
+    "main.js": "/Wordler-solver/static/js/main.2ba5e790.js",
     "index.html": "/Wordler-solver/index.html",
-    "main.862e115b.css.map": "/Wordler-solver/static/css/main.862e115b.css.map",
-    "main.461ee0b4.js.map": "/Wordler-solver/static/js/main.461ee0b4.js.map",
-    "787.ec997f31.chunk.js.map": "/Wordler-solver/static/js/787.ec997f31.chunk.js.map"
+    "main.2532db9b.css.map": "/Wordler-solver/static/css/main.2532db9b.css.map",
+    "main.2ba5e790.js.map": "/Wordler-solver/static/js/main.2ba5e790.js.map"
   },
   "entrypoints": [
-    "static/css/main.862e115b.css",
-    "static/js/main.461ee0b4.js"
+    "static/css/main.2532db9b.css",
+    "static/js/main.2ba5e790.js"
   ]
 }
