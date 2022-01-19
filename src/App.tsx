@@ -129,11 +129,11 @@ function App() {
                         {partialMatch.split("").map(l=><S.Letter color={"#B59F3B"}>{l}</S.Letter> )}
                     </S.LetterList>
                     <S.Flex>
-                        <S.Label>Full match letter</S.Label>
+                        <S.Label>Full matching letter</S.Label>
                         <S.Input type="text" value={addFullMatchLetter} onChange={handleFullMatchLetterChange}/>
-                        <S.Label>Full match index</S.Label>
+                        <S.Label>Full matching index</S.Label>
                         <S.Input type="text" value={addFullMatchindex} onChange={handleFullMatchIndexChange}/>
-                        <S.Button onClick={handleAddFullMatch}>Add full match</S.Button>
+                        <S.Button onClick={handleAddFullMatch}>Add full matching letter</S.Button>
                     </S.Flex>
                     <S.LetterList>
                         {fullMatch.map(l=><S.Letter color={"#538D4E"}>{l.letter}</S.Letter> )}
