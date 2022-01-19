@@ -19,8 +19,16 @@ export const Flex = styled.div`
   flex-wrap: wrap;
 `
 
-export const Label = styled.div`
+export const H1 = styled.h1`
   font-size: 24px;
+  margin-top: 2vh;
+  color: #D7DADC;
+
+`
+
+export const Label = styled.label`
+  font-size: 18px;
+  line-height: 42px;
   color: #D7DADC;
 `
 

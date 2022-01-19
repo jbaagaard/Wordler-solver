@@ -20,44 +20,24 @@ function App() {
     let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     let activeLetters = [...letters]
 
-    function handleNoMatchChange(event: ChangeEvent<HTMLInputElement>) {
-        setNoMatch((event.currentTarget.value + "").replace(/[^a-zA-Z]/g, '').toLocaleLowerCase())
-    }
-
-    function handlePartialMatchChange(event: ChangeEvent<HTMLInputElement>) {
-        setPartialMatch((event.currentTarget.value + "").replace(/[^a-zA-Z]/g, '').toLocaleLowerCase())
-    }
-
-    function handleFullMatchLetterChange(event: ChangeEvent<HTMLInputElement>) {
-        setAddFullMatchLetter((event.currentTarget.value + "").replace(/[^a-zA-Z]/g, '').toLocaleLowerCase())
-    }
-
-    function handleFullMatchIndexChange(event: ChangeEvent<HTMLInputElement>) {
-        setAddFullMatchindex(+(event.currentTarget.value + "").replace(/[^0-9]/g, '').toLocaleLowerCase())
-    }
-
     function generateNext() {
         console.log(keys.length);
         const nk = noMatch.split("")
-        for (let i = 0; i < nk.length; i++) {
+        for (let i = 0; i < nk.length; i++)
             keys = keys.filter(key => !key.includes(nk[i]))
-        }
         const pk = partialMatch.split("")
-        for (let i = 0; i < pk.length; i++) {
-            keys = keys.filter(key => key.includes(pk[i]))
-        }
-        console.log(keys.length);
 
-        for (let i = 0; i < fullMatch.length; i++) {
+        for (let i = 0; i < pk.length; i++)
+            keys = keys.filter(key => key.includes(pk[i]))
+
+        for (let i = 0; i < fullMatch.length; i++)
             keys = keys.filter(key => key.charAt(fullMatch[i].index - 1) === fullMatch[i].letter)
-        }
 
         const usedLetters = [...nk, ...pk, ...fullMatch.map(l => l.letter)]
         activeLetters = activeLetters.filter(l => !usedLetters.find(ul => ul === l))
         const rankedLetters: { letter: string, amount: number }[] = []
-        for (let i = 0; i < letters.length; i++) {
+        for (let i = 0; i < letters.length; i++)
             rankedLetters.push({letter: letters[i], amount: keys.filter(k => k.includes(letters[i])).length})
-        }
 
         const rankedKeys: { key: string, score: number }[] = []
         for (let i = 0; i < keys.length; i++) {
@@ -74,11 +54,6 @@ function App() {
         const topKeys = rankedKeys.sort(compare).filter((rk, i) => i < 5).map(k => k.key)
         setNextGuess(topKeys.join(" "));
         setKeyAmount(keys.length);
-        console.log({letters})
-        console.log({rankedLetters})
-        console.log({keys});
-        console.log(rankedKeys);
-        console.log(keys.length);
     }
 
     function compare(a: { key: string, score: number }, b: { key: string, score: number }) {
@@ -98,23 +73,40 @@ function App() {
 
     }
 
+    function handleNoMatchChange(event: ChangeEvent<HTMLInputElement>) {
+        setNoMatch((event.currentTarget.value + "").replace(/[^a-zA-Z]/g, '').toLocaleLowerCase())
+    }
+
+    function handlePartialMatchChange(event: ChangeEvent<HTMLInputElement>) {
+        setPartialMatch((event.currentTarget.value + "").replace(/[^a-zA-Z]/g, '').toLocaleLowerCase())
+    }
+
+    function handleFullMatchLetterChange(event: ChangeEvent<HTMLInputElement>) {
+        setAddFullMatchLetter((event.currentTarget.value + "").replace(/[^a-zA-Z]/g, '').toLocaleLowerCase())
+    }
+
+    function handleFullMatchIndexChange(event: ChangeEvent<HTMLInputElement>) {
+        setAddFullMatchindex(+(event.currentTarget.value + "").replace(/[^0-9]/g, '').toLocaleLowerCase())
+    }
+
     return (
         <div className="App">
             <S.Content>
                 <S.FlexColumn>
+                    <S.H1>Wordle solver</S.H1>
                     <S.Flex>
                         <S.Label>Not maching letters</S.Label>
                         <S.Input type="text" value={noMatch} onChange={handleNoMatchChange}/>
                     </S.Flex>
                     <S.LetterList>
-                        {noMatch.split("").map(l=><S.Letter color={"#3A3A3C"}>{l}</S.Letter> )}
+                        {noMatch.split("").map(l => <S.Letter color={"#3A3A3C"}>{l}</S.Letter>)}
                     </S.LetterList>
                     <S.Flex>
                         <S.Label>Partial matching letters</S.Label>
                         <S.Input type="text" value={partialMatch} onChange={handlePartialMatchChange}/>
                     </S.Flex>
                     <S.LetterList>
-                        {partialMatch.split("").map(l=><S.Letter color={"#B59F3B"}>{l}</S.Letter> )}
+                        {partialMatch.split("").map(l => <S.Letter color={"#B59F3B"}>{l}</S.Letter>)}
                     </S.LetterList>
                     <S.Flex>
                         <S.Label>Full matching letter</S.Label>
@@ -124,16 +116,16 @@ function App() {
                         <S.Button onClick={handleAddFullMatch}>Add full matching letter</S.Button>
                     </S.Flex>
                     <S.LetterList>
-                        {fullMatch.map(l=><S.Letter color={"#538D4E"}>{l.letter}</S.Letter> )}
+                        {fullMatch.map(l => <S.Letter color={"#538D4E"}>{l.letter}</S.Letter>)}
                     </S.LetterList>
                     <S.Button onClick={generateNext}>Generate Best Match</S.Button>
                     <S.Label>best guesses: {nextGuess}</S.Label>
                     <S.Label>{"total words: " + keyAmount}</S.Label>
                 </S.FlexColumn>
             </S.Content>
-
         </div>
     );
 }
 
 export default App;
+
