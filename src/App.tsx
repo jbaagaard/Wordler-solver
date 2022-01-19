@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useState} from 'react';
 import './App.css';
-import dictionary from "./dictionary.json"
 import * as S from "./App.styled"
+import {dict} from "./dictionary";
 
 interface FullMatch {
     letter: string,
@@ -15,7 +15,7 @@ function App() {
     const [addFullMatchindex, setAddFullMatchindex] = useState<number>(1);
     const [addFullMatchLetter, setAddFullMatchLetter] = useState<string>("");
     const [nextGuess, setNextGuess] = useState<string>("");
-    let keys = Object.keys(dictionary).filter(w => w.length === 5)
+    let keys = dict.filter(w => w.length === 5)
     const [keyAmount, setKeyAmount] = useState(keys.length);
     let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     let activeLetters = [...letters]

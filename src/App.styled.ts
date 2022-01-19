@@ -16,6 +16,7 @@ export const Flex = styled.div`
  display: flex;
   gap: 8px;
   justify-content: center;
+  flex-wrap: wrap;
 `
 
 export const Label = styled.div`
