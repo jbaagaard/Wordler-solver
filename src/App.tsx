@@ -20,32 +20,20 @@ function App() {
     let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     let activeLetters = [...letters]
 
-    function download(content: any, fileName: string, contentType: string) {
-        var a = document.createElement("a");
-        var file = new Blob([content], {type: contentType});
-        a.href = URL.createObjectURL(file);
-        a.download = fileName;
-        a.click();
-    }
-
-    function handleSave() {
-        download(keys, 'json.json', 'json');
-    }
-
     function handleNoMatchChange(event: ChangeEvent<HTMLInputElement>) {
-        setNoMatch(event.currentTarget.value + "")
+        setNoMatch((event.currentTarget.value + "").replace(/[^a-zA-Z]/g, '').toLocaleLowerCase())
     }
 
     function handlePartialMatchChange(event: ChangeEvent<HTMLInputElement>) {
-        setPartialMatch(event.currentTarget.value + "")
+        setPartialMatch((event.currentTarget.value + "").replace(/[^a-zA-Z]/g, '').toLocaleLowerCase())
     }
 
     function handleFullMatchLetterChange(event: ChangeEvent<HTMLInputElement>) {
-        setAddFullMatchLetter(event.currentTarget.value + "")
+        setAddFullMatchLetter((event.currentTarget.value + "").replace(/[^a-zA-Z]/g, '').toLocaleLowerCase())
     }
 
     function handleFullMatchIndexChange(event: ChangeEvent<HTMLInputElement>) {
-        setAddFullMatchindex(+event.currentTarget.value)
+        setAddFullMatchindex(+(event.currentTarget.value + "").replace(/[^0-9]/g, '').toLocaleLowerCase())
     }
 
     function generateNext() {
@@ -74,7 +62,7 @@ function App() {
         const rankedKeys: { key: string, score: number }[] = []
         for (let i = 0; i < keys.length; i++) {
             let score = 0
-            const keyChars = keys[i].replace(/[^a-zA-Z0-9]/g, '').split("");
+            const keyChars = keys[i].replace(/[^a-zA-Z]/g, '').split("");
             let usedChars = ""
             for (let i2 = 0; i2 < keyChars.length; i2++) {
                 if (!usedChars.includes(keyChars[i2]))
